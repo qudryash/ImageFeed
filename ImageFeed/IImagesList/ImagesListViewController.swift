@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ImagesListViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     
@@ -26,6 +27,7 @@ class ImagesListViewController: UIViewController {
     
 }
 
+
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
     
@@ -41,7 +43,7 @@ extension ImagesListViewController: UITableViewDelegate {
         return cellHeight
     }
 }
-    
+
 
 extension ImagesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,11 +61,11 @@ extension ImagesListViewController: UITableViewDataSource {
         return imageListCell
     }
     
-    
 }
 
+
 extension ImagesListViewController {
-    func configCell (for cell: ImagesListCell, with indexPath: IndexPath) {
+    private func configCell (for cell: ImagesListCell, with indexPath: IndexPath) {
         guard let image = UIImage(named: photosName[indexPath.row]) else {
             return
         }
@@ -72,7 +74,7 @@ extension ImagesListViewController {
         cell.dateLabel.text = dateFormatter.string(from: Date())
         
         let isLiked = indexPath.row % 2 == 0
-        let likeImage = isLiked ? UIImage(named: "Active Like") : UIImage(named: "No Active Like")
+        let likeImage = isLiked ? UIImage(named: "No Active Like") : UIImage(named: "Active Like")
         cell.likeButton.setImage(likeImage, for: .normal)
     }
 }
