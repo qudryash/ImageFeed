@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,23 +43,50 @@
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="Active Like"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aff-aQ-9Sk" userLabel="dateLabel">
-                                                    <rect key="frame" x="24" y="294" width="101.5" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" name="YP White (iOS)"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dd-3G-DIi" customClass="GradientView" customModule="ImageFeed" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="288" width="382" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aff-aQ-9Sk" userLabel="dateLabel">
+                                                            <rect key="frame" x="20" y="4" width="140" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="18" id="kja-RG-7yR"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="152" id="rRt-KX-oAS"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" name="YP White (iOS)"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="JM9-9k-upf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="aff-aQ-9Sk" secondAttribute="bottom" constant="8" id="Req-sA-f1Z">
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </constraint>
+                                                        <constraint firstItem="aff-aQ-9Sk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1dd-3G-DIi" secondAttribute="leading" constant="20" symbolic="YES" id="Tu7-h4-FQs"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aff-aQ-9Sk" secondAttribute="trailing" constant="222" id="aYQ-zN-s5q"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius.topLeft">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eqE-OV-RJk" firstAttribute="leading" secondItem="kYf-6C-zeE" secondAttribute="leading" constant="16" id="6I6-ou-Edn"/>
                                                 <constraint firstItem="eqE-OV-RJk" firstAttribute="top" secondItem="kYf-6C-zeE" secondAttribute="top" constant="4" id="GiS-8x-jts"/>
+                                                <constraint firstItem="fYq-2D-dUd" firstAttribute="top" secondItem="eqE-OV-RJk" secondAttribute="top" id="OVm-zF-fZv"/>
                                                 <constraint firstAttribute="bottom" secondItem="eqE-OV-RJk" secondAttribute="bottom" constant="4" id="QCQ-lq-hmd"/>
                                                 <constraint firstAttribute="trailing" secondItem="eqE-OV-RJk" secondAttribute="trailing" constant="16" id="RAV-HB-iFY"/>
-                                                <constraint firstItem="fYq-2D-dUd" firstAttribute="top" secondItem="eqE-OV-RJk" secondAttribute="top" id="VzR-SA-gsi"/>
-                                                <constraint firstItem="aff-aQ-9Sk" firstAttribute="leading" secondItem="eqE-OV-RJk" secondAttribute="leading" constant="8" id="ZSJ-rC-hnB"/>
-                                                <constraint firstItem="eqE-OV-RJk" firstAttribute="bottom" secondItem="aff-aQ-9Sk" secondAttribute="bottom" constant="8" id="hA1-g4-n5O"/>
-                                                <constraint firstItem="eqE-OV-RJk" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aff-aQ-9Sk" secondAttribute="trailing" constant="8" id="iXW-PY-TFQ"/>
-                                                <constraint firstItem="eqE-OV-RJk" firstAttribute="trailing" secondItem="fYq-2D-dUd" secondAttribute="trailing" id="pAE-Ys-ZnC"/>
+                                                <constraint firstItem="1dd-3G-DIi" firstAttribute="bottom" secondItem="eqE-OV-RJk" secondAttribute="bottom" id="XMc-Wr-by5"/>
+                                                <constraint firstItem="1dd-3G-DIi" firstAttribute="trailing" secondItem="eqE-OV-RJk" secondAttribute="trailing" id="Ybf-Gr-iV9"/>
+                                                <constraint firstItem="1dd-3G-DIi" firstAttribute="leading" secondItem="eqE-OV-RJk" secondAttribute="leading" id="nKn-oG-Lr0"/>
+                                                <constraint firstItem="fYq-2D-dUd" firstAttribute="trailing" secondItem="eqE-OV-RJk" secondAttribute="trailing" id="uqs-m9-Gf5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="YP Black (iOS)"/>
@@ -97,5 +125,8 @@
         <namedColor name="YP White (iOS)">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
