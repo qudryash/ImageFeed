@@ -39,7 +39,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="32R-4K-Efq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="32R-4K-Efq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" name="YP Black (iOS)"/>
                                 <prototypes>
@@ -71,6 +71,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="YP Black (iOS)"/>
                                             <constraints>
                                                 <constraint firstItem="eqE-OV-RJk" firstAttribute="leading" secondItem="kYf-6C-zeE" secondAttribute="leading" constant="16" id="6I6-ou-Edn"/>
                                                 <constraint firstItem="eqE-OV-RJk" firstAttribute="top" secondItem="kYf-6C-zeE" secondAttribute="top" constant="4" id="GiS-8x-jts"/>
@@ -88,6 +89,7 @@
                                             <outlet property="cellImage" destination="eqE-OV-RJk" id="x3a-Bx-iTa"/>
                                             <outlet property="dateLabel" destination="aff-aQ-9Sk" id="nRi-Ee-fPo"/>
                                             <outlet property="likeButton" destination="fYq-2D-dUd" id="a1g-xP-Nb3"/>
+                                            <segue destination="DBi-qe-rIH" kind="show" id="bKz-xi-6h2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -114,6 +116,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.8840579710145" y="-35.491071428571423"/>
+        </scene>
+        <!--SingleImage-->
+        <scene sceneID="Oup-Qg-UPH">
+            <objects>
+                <viewController id="DBi-qe-rIH" userLabel="SingleImage" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AgG-iF-FMe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="rf1-xV-Jlx" userLabel="Image View">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="02b-nj-WiJ"/>
+                        <color key="backgroundColor" name="YP Black (iOS)"/>
+                        <constraints>
+                            <constraint firstItem="rf1-xV-Jlx" firstAttribute="top" secondItem="02b-nj-WiJ" secondAttribute="top" id="DI8-Ch-kcT"/>
+                            <constraint firstItem="rf1-xV-Jlx" firstAttribute="leading" secondItem="02b-nj-WiJ" secondAttribute="leading" id="YEu-Rg-9o7"/>
+                            <constraint firstItem="rf1-xV-Jlx" firstAttribute="bottom" secondItem="02b-nj-WiJ" secondAttribute="bottom" id="hRX-Yo-xn1"/>
+                            <constraint firstItem="rf1-xV-Jlx" firstAttribute="trailing" secondItem="02b-nj-WiJ" secondAttribute="trailing" id="zYv-7L-qtl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q4b-bu-HkM"/>
+                    <connections>
+                        <outlet property="imageView" destination="rf1-xV-Jlx" id="RKp-66-z3X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FQa-eB-m9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2008.6956521739132" y="-34.151785714285715"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ceZ-4Y-uSd">
