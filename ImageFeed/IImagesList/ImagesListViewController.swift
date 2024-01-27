@@ -8,7 +8,9 @@
 import UIKit
 
 
-class ImagesListViewController: UIViewController {
+final class ImagesListViewController: UIViewController {
+    private let ShowSingleImageSegueIdentifier = "ShowSingleImage"
+    
     @IBOutlet private var tableView: UITableView!
     
     private let photosName: [String] = Array(0..<20).map{ "\($0)"}
@@ -26,13 +28,13 @@ class ImagesListViewController: UIViewController {
     }()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSingleImage" { // 1
-            let viewController = segue.destination as! SingleImageViewController // 2
-            let indexPath = sender as! IndexPath // 3
-            let image = UIImage(named: photosName[indexPath.row]) // 4
-            viewController.imageView.image = image // 5
+        if segue.identifier == ShowSingleImageSegueIdentifier {
+            let viewController = segue.destination as! SingleImageViewController
+            let indexPath = sender as! IndexPath
+            let image = UIImage(named: photosName[indexPath.row])
+            viewController.image = image // В учебнике ошибка стоит viewController.imageView.image = image
         } else {
-            super.prepare(for: segue, sender: sender) // 6
+            super.prepare(for: segue, sender: sender)
         }
     }
     
@@ -40,8 +42,8 @@ class ImagesListViewController: UIViewController {
 
 
 extension ImagesListViewController: UITableViewDelegate {
-    func tableView(_tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowSingleImage", sender: indexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: ShowSingleImageSegueIdentifier, sender: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -71,7 +71,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="YP Black (iOS)"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="eqE-OV-RJk" firstAttribute="leading" secondItem="kYf-6C-zeE" secondAttribute="leading" constant="16" id="6I6-ou-Edn"/>
                                                 <constraint firstItem="eqE-OV-RJk" firstAttribute="top" secondItem="kYf-6C-zeE" secondAttribute="top" constant="4" id="GiS-8x-jts"/>
@@ -110,7 +110,7 @@
                     <navigationItem key="navigationItem" id="eEm-4c-nnE"/>
                     <connections>
                         <outlet property="tableView" destination="32R-4K-Efq" id="Pf6-iV-tKD"/>
-                        <segue destination="DBi-qe-rIH" kind="show" identifier="ShowSingleImage" id="chS-au-dlt"/>
+                        <segue destination="DBi-qe-rIH" kind="show" identifier="ShowSingleImage" id="1xC-MS-bdx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
