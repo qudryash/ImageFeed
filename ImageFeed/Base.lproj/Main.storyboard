@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hoi-vu-16J">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="123.18840579710145" y="-34.821428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile-->
         <scene sceneID="ceZ-4Y-uSd">
             <objects>
-                <viewController id="Hoi-vu-16J" sceneMemberID="viewController">
+                <viewController title="Profile" id="Hoi-vu-16J" customClass="ProfileViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xjc-Zg-7XB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,6 +129,9 @@
                                 <rect key="frame" x="366" y="103" width="24" height="24"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="Exit"/>
+                                <connections>
+                                    <action selector="didTapLogoutButton:" destination="Hoi-vu-16J" eventType="touchUpInside" id="VAJ-l1-pwY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="maV-Py-3Ub"/>
@@ -149,6 +152,13 @@
                             <constraint firstItem="pN3-1g-6nW" firstAttribute="trailing" secondItem="LBV-2l-bKk" secondAttribute="trailing" id="qb7-oZ-Ir7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aboutMeLabel" destination="2HI-CY-m6l" id="ma4-fq-yCQ"/>
+                        <outlet property="logoutButton" destination="LBV-2l-bKk" id="M23-ay-RkR"/>
+                        <outlet property="nickNameLabel" destination="LEC-OR-oSB" id="7T5-bD-QMc"/>
+                        <outlet property="userNameLabel" destination="pN3-1g-6nW" id="fBQ-QL-rRM"/>
+                        <outlet property="userPhotoImageView" destination="EHD-eI-rBb" id="wW3-En-CVR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZA-la-66b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
