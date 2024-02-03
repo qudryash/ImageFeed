@@ -33,7 +33,7 @@ final class SingleImageViewController: UIViewController {
     
     @IBAction func didTapShareButton(_ sender: Any) {
         let share = UIActivityViewController(
-            activityItems: [image],
+            activityItems: [image!],
             applicationActivities: nil
         )
         
@@ -43,6 +43,7 @@ final class SingleImageViewController: UIViewController {
     private func rescaleAndCenterImageInScrollView(image: UIImage) {
         let minZoomScale = scrollView.minimumZoomScale
         let maxZoomScale = scrollView.maximumZoomScale
+        updateContentInsetForScrollView(scrollView)
         view.layoutIfNeeded()
         let visibleRectSize = scrollView.bounds.size
         let imageSize = image.size
@@ -52,15 +53,36 @@ final class SingleImageViewController: UIViewController {
         scrollView.setZoomScale(scale, animated: false)
         scrollView.layoutIfNeeded()
         let newContentSize = scrollView.contentSize
-        let x = (newContentSize.width - visibleRectSize.width) / 2
-        let y = (newContentSize.height - visibleRectSize.height) / 2
-        scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
+        let horizontalInset = max(0, (scrollView.bounds.width - newContentSize.width) / 2)
+        let verticalInset = max(0, (scrollView.bounds.height - newContentSize.height) / 2)
+        scrollView.contentInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
     }
 
 }
 
 extension SingleImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        imageView
+        return imageView
+    }
+
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        updateContentInsetForScrollView(scrollView)
+    }
+    
+    private func updateContentInsetForScrollView(_ scrollView: UIScrollView) {
+        let boundsSize = scrollView.bounds.size
+        var contentInset = UIEdgeInsets.zero
+
+        if let image = imageView.image {
+            let contentSize = scrollView.contentSize
+            contentInset.top = max(0, (boundsSize.height - contentSize.height) / 2)
+            contentInset.left = max(0, (boundsSize.width - contentSize.width) / 2)
+            contentInset.bottom = contentInset.top
+            contentInset.right = contentInset.left
+        }
+
+        scrollView.contentInset = contentInset
     }
 }
+
+
