@@ -57,14 +57,14 @@ final class SingleImageViewController: UIViewController {
         let verticalInset = max(0, (scrollView.bounds.height - newContentSize.height) / 2)
         scrollView.contentInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
     }
-
+    
 }
 
 extension SingleImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
-
+    
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         updateContentInsetForScrollView(scrollView)
     }
@@ -72,7 +72,7 @@ extension SingleImageViewController: UIScrollViewDelegate {
     private func updateContentInsetForScrollView(_ scrollView: UIScrollView) {
         let boundsSize = scrollView.bounds.size
         var contentInset = UIEdgeInsets.zero
-
+        
         if let image = imageView.image {
             let contentSize = scrollView.contentSize
             contentInset.top = max(0, (boundsSize.height - contentSize.height) / 2)
@@ -80,7 +80,7 @@ extension SingleImageViewController: UIScrollViewDelegate {
             contentInset.bottom = contentInset.top
             contentInset.right = contentInset.left
         }
-
+        
         scrollView.contentInset = contentInset
     }
 }

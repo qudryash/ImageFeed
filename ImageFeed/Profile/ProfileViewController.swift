@@ -59,7 +59,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(logoutButton)
         logoutButton.tintColor = .ypRedIOS
         logoutButton.contentEdgeInsets = UIEdgeInsets(top: 11, left: 16, bottom: 11, right: 8)
-
+        
     }
     
     private func setupConstraints() {
