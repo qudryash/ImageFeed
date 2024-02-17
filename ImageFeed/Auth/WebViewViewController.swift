@@ -31,14 +31,14 @@ final class WebViewViewController: UIViewController {
         
         webView.navigationDelegate = self
         
-        var urlComponents = URLComponents(string: unsplashAuthorizeURLString)!  //1
+        var urlComponents = URLComponents(string: unsplashAuthorizeURLString)!
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: accessKey),                  //2
-            URLQueryItem(name: "redirect_uri", value: redirectURI),             //3
-            URLQueryItem(name: "response_type", value: "code"),                 //4
-            URLQueryItem(name: "scope", value: accessScope)                     //5
+            URLQueryItem(name: "client_id", value: accessKey),
+            URLQueryItem(name: "redirect_uri", value: redirectURI),
+            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "scope", value: accessScope)
         ]
-        let url = urlComponents.url!                                            //6
+        let url = urlComponents.url!
         
         let request = URLRequest(url: url)
         webView.load(request)
