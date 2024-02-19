@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class ImagesListViewController: UIViewController {
     private let ShowSingleImageSegueIdentifier = "ShowSingleImage"
     
@@ -18,9 +17,6 @@ final class ImagesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
-        
-        
-        
     }
     
     private lazy var dateFormatter: DateFormatter = {
@@ -43,7 +39,6 @@ final class ImagesListViewController: UIViewController {
     
 }
 
-
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: ShowSingleImageSegueIdentifier, sender: indexPath)
@@ -62,7 +57,6 @@ extension ImagesListViewController: UITableViewDelegate {
     }
 }
 
-
 extension ImagesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photosName.count
@@ -80,7 +74,6 @@ extension ImagesListViewController: UITableViewDataSource {
     }
     
 }
-
 
 extension ImagesListViewController {
     private func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {

@@ -84,5 +84,3 @@ extension SingleImageViewController: UIScrollViewDelegate {
         scrollView.contentInset = contentInset
     }
 }
-
-
