@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 final class SplashViewController: UIViewController {
     private let ShowAuthenticationScreenSegueIdentifier = "ShowAuthenticationScreen"
@@ -19,19 +20,18 @@ final class SplashViewController: UIViewController {
         if let token = oauth2TokenStorage.token {
             switchToTabBarController()
         } else {
-            // Show Auth Screen
             performSegue(withIdentifier: ShowAuthenticationScreenSegueIdentifier, sender: nil)
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        setNeedsStatusBarAppearanceUpdate()
+//    }
+//    
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        .lightContent
+//    }
     
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
@@ -57,10 +57,12 @@ extension SplashViewController {
 
 extension SplashViewController: AuthViewControllerDelegate {
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
-        dismiss(animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.fetchOAuthToken(code)
-        }
+        ProgressHUD.show()
+        fetchOAuthToken(code)
+//        dismiss(animated: true) { [weak self] in
+//            guard let self = self else { return }
+//            self.fetchOAuthToken(code)
+//        }
     }
     
     private func fetchOAuthToken(_ code: String) {
@@ -74,6 +76,7 @@ extension SplashViewController: AuthViewControllerDelegate {
                 break
             }
         }
+        ProgressHUD.dismiss()
     }
 }
 
