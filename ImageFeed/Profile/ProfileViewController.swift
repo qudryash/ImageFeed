@@ -14,6 +14,10 @@ final class ProfileViewController: UIViewController {
     private let aboutMeLabel = UILabel()
     private let logoutButton = UIButton()
     
+    private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
+    
     override func viewDidLoad() {
         setupUserPhotoImageView()
         setupUserNameLabel()
@@ -21,6 +25,39 @@ final class ProfileViewController: UIViewController {
         setupAboutMeLabel()
         setupLogoutButton()
         setupConstraints()
+        
+        updateProfileDetails(profile: profileService.profile)
+    }
+    
+    private func updateProfileDetails(profile: Profile?) {
+        if let profile = profile {
+            userNameLabel.text = profile.name
+            nickNameLabel.text = profile.loginName
+            aboutMeLabel.text = profile.bio
+        } else {
+            userNameLabel.text = "Error"
+            nickNameLabel.text = "Error"
+            aboutMeLabel.text = "Error"
+        }
+        
+        profileImageServiceObserver = NotificationCenter.default.addObserver(
+             forName: ProfileImageService.didChangeNotification,
+             object: nil,
+             queue: .main,
+             using: { [weak self] _ in
+                 guard let self else { return }
+                 self.updateAvatar()
+             }
+         )
+
+         updateAvatar()
+     }
+
+     private func updateAvatar() {
+         guard let profileImageURL = profileImageService.avatarURL,
+             let imageURL = URL(string: profileImageURL)
+         else { return }
+         
     }
     
     private func setupUserPhotoImageView () {

@@ -27,7 +27,7 @@ class OAuth2Service {
     func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         assert(Thread.isMainThread)
-        if lastCode == code {
+        if lastCode != code {
             return
         }
         task?.cancel()
@@ -104,15 +104,16 @@ private enum NetworkError: Error {
     case httpStatusCode(Int)
     case urlRequestError(Error)
     case urlSessionError
+    case decodingError
 }
 
 
-private extension URLSession {
-    func data(
+extension URLSession {
+    func data<T:Decodable>(
         for request: URLRequest,
-        completion: @escaping (Result<Data,Error>) -> Void)
+        completion: @escaping (Result<T,Error>) -> Void)
     -> URLSessionTask {
-        let fulfillCompletion: (Result<Data,Error>) -> Void = { result in
+        let fulfillCompletion: (Result<T,Error>) -> Void = { result in
             DispatchQueue.main.async {
                 completion(result)
             }
@@ -124,7 +125,14 @@ private extension URLSession {
                let statusCode = (response as? HTTPURLResponse)?.statusCode
             {
                 if 200..<300 ~= statusCode {
-                    fulfillCompletion(.success(data))
+                    let jsonDecoder = JSONDecoder()
+                     do {
+                         let decodedModel = try jsonDecoder.decode(T.self, from: data)
+                         fulfillCompletion(.success(decodedModel))
+                     }
+                     catch {
+                         fulfillCompletion(.failure(NetworkError.decodingError))
+                     }
                 } else {
                     fulfillCompletion(.failure(NetworkError.httpStatusCode(statusCode)))
                 }
