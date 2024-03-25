@@ -71,12 +71,12 @@ extension SplashViewController: AuthViewControllerDelegate {
             switch result {
             case .success:
                 self.switchToTabBarController()
+                UIBlockingProgressHUD.dismiss()
             case .failure:
-                // TODO [Sprint 11]
+                UIBlockingProgressHUD.dismiss()
                 break
             }
         }
-        UIBlockingProgressHUD.dismiss()
     }
 }
 
